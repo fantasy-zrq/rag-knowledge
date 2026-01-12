@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: knowledge-app
+  profiles:
+    active: dev
