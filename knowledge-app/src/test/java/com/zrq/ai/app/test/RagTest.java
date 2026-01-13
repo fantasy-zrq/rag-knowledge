@@ -61,7 +61,7 @@ public class RagTest {
 
     @Test
     public void chat() {
-        String message = "我需要李铁柱的部分信息。";
+        String message = "我的公网ip是多少？";
 
         String SYSTEM_PROMPT = """
                 Use the information from the DOCUMENTS section to provide accurate answers but act as if you knew this information innately.
@@ -71,7 +71,7 @@ public class RagTest {
                     {documents}
                 """;
 
-        SearchRequest request = SearchRequest.query(message).withTopK(5).withFilterExpression("knowledge == 'rag2'");
+        SearchRequest request = SearchRequest.query(message).withTopK(5).withFilterExpression("knowledge == 'cloudRagTest'");
 
         List<Document> documents = pgVectorStore.similaritySearch(request);
         String documentsCollectors = documents.stream().map(Document::getContent).collect(Collectors.joining());
